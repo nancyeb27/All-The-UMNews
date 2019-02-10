@@ -27,14 +27,16 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/umnews", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/unNewsdb", { useNewUrlParser: true });
 
 
 // First, tell the console what server.js is doing
 console.log("\n***********************************\n" +
     "Grabbing every thread name and link\n" +
-    "from UMCNews webdev board:" +
+    "from UMNews webdev board:" +
     "\n***********************************\n");
+
+    
 
 /// Routes
 
@@ -56,7 +58,7 @@ console.log(result)
       .parent("a")
       .text();
     result.link = $(this)
-      .parent("a")
+      .children("a")
       .attr("href");
       // var titleNew = title.split("\n");
 
