@@ -58,15 +58,18 @@ console.log(result)
       .parent("a")
       .text();
     result.link = $(this)
-      .children("a")
+      .parent("a")
       .attr("href");
-      // var titleNew = title.split("\n");
-
+    result.summary = $(this)
+      .parent("div.item-summary")
+      .text(); 
+      console.log(result.summary);
+     
     // Create a new Article using the `result` object built from scraping
     db.Article.create(result)
       .then(function(dbArticle) {
         // View the added result in the console
-        console.log(dbArticle);
+        console.log(dbArticle.summary);
       })
       .catch(function(err) {
         // If an error occurred, log it
