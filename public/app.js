@@ -4,8 +4,13 @@ $.getJSON("/articles", function(data) {
     console.log(data);
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
+      console.log(data[i].summary);
+      if (data[i].summary !=""){
+
+      
       $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" +  "<a href='https://www.umnews.org'" + data[i].link + ">https://www.umnews.org" + data[i].link +
-      "<a/>"  +  data[i].summary + "</p>");
+      "<a/>"  + "br" + data[i].summary + "</p>");
+      }
     }
   });
   

@@ -61,8 +61,9 @@ console.log(result)
       .parent("a")
       .attr("href");
     result.summary = $(this)
-      .parent("div.item-summary")
+      .parent("a").next()
       .text(); 
+      console.log(result.title);
       console.log(result.summary);
      
     // Create a new Article using the `result` object built from scraping
