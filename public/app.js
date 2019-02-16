@@ -38,7 +38,8 @@ $.getJSON("/articles", function(data) {
         $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
         $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
-  
+         // A button to submit a delete note, with the id of the article saved to it
+         $("#notes").append("<button data-id='" + data._id + "' id='removenote'>Remove Note</button>");
         // If there's a note in the article
         if (data.note) {
           // Place the title of the note in the title input
@@ -97,7 +98,7 @@ $.getJSON("/articles", function(data) {
       // With that done
       .then(function(data) {
          // A button to submit a delete note, with the id of the article saved to it
-         $("#notes").append("<button data-id='" + data._id + "' id='removenote'>Remove Note</button>");
+     
         // Log the response
         console.log(data);
         // Empty the notes section
