@@ -12,6 +12,16 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
     "morgan": "^1.9.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nancyeb27/All-The-UMNews.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nancyeb27/All-The-UMNews/issues"
+  },
+  "homepage": "https://github.com/nancyeb27/All-The-UMNews#readme"
 }
