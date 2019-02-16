@@ -8,8 +8,8 @@ $.getJSON("/articles", function(data) {
       if (data[i].summary !=""){
 
       
-      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" +  "<a href='https://www.umnews.org'" + data[i].link + ">https://www.umnews.org" + data[i].link +
-      "<a/>"  + "br" + data[i].summary + "</p>");
+      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title +  "<br />" + "<a href='https://www.umnews.org'" + data[i].link + ">https://www.umnews.org" + data[i].link +
+      "<a/>"  + "<br/>" + "<br/>" + data[i].summary + "</p>");
       }
     }
   });
@@ -67,6 +67,37 @@ $.getJSON("/articles", function(data) {
     })
       // With that done
       .then(function(data) {
+        // Log the response
+        console.log(data);
+        // Empty the notes section
+        $("#notes").empty();
+      });
+  
+    // Also, remove the values entered in the input and textarea for note entry
+    $("#titleinput").val("");
+    $("#bodyinput").val("");
+  });
+
+  // When you click the removenote button
+  $(document).on("click", "#removenote", function() {
+    // Grab the id associated with the article from the submit button
+    var thisId = $(this).attr("data-id");
+  
+    // Run a DELETE request to change the note.
+    $.ajax({
+      method: "DELETE",
+      url: "/articles/" + thisId,
+      data: {
+        // Value taken from title input
+        title: $("#titleinput").val(),
+        // Value taken from note textarea
+        body: $("#bodyinput").val()
+      }
+    })
+      // With that done
+      .then(function(data) {
+         // A button to submit a delete note, with the id of the article saved to it
+         $("#notes").append("<button data-id='" + data._id + "' id='removenote'>Remove Note</button>");
         // Log the response
         console.log(data);
         // Empty the notes section
