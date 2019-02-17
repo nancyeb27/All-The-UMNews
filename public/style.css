@@ -1,4 +1,9 @@
-body { background-color: rgb(236, 191, 234) 
+body { background-color: rgb(53, 8, 51) 
+}
+
+.navbar-brand {
+    border-color: crimson;
+
 }
 
 .new-article-btn {

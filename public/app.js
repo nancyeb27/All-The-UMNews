@@ -64,7 +64,7 @@ $(document).on("click", ".btn-note", function () {
       $(".modal-title").append("<h5>" + data.title + "</h5>");
       $(".input").append("<textarea id='bodyinput' name='body'></textarea>");
       $(".input").append("<button data-id='" + data._id + "' id='savenote' class='btn btn-primary btn-sm' style='margin-top:20px;'data-dismiss='modal'>Save Note</button>");
-      $(".input").append("<button data-id='" + data._id + "' id='deletenote' class='btn btn-primary btn-sm' style='margin-top:20px;'data-dismiss='modal'>Delete Note</button>");
+      $(".input").append("<button data-id='" + data._id + "' id='removenote' class='btn btn-primary btn-sm' style='margin-top:20px;'data-dismiss='modal'>Delete Note</button>");
       // If there's a note in the article
       if (data.note) {
         // Place the body of the note in the body textarea
