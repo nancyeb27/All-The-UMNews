@@ -102,6 +102,7 @@ db.Article.find({})
   .sort({articleCreated:-1})
   .then(function(dbArticle) {
     // If we were able to successfully find Articles, send them back to the client
+    console.log(dbArticle);
     res.json(dbArticle);
   })
   .catch(function(err) {
@@ -176,7 +177,7 @@ app.get("/saved", function(req, res) {
 app.put("/delete/:id", function(req, res) {
 
   db.Article
-    .findByIdAndUpdate({ _id: req.params.id }, { $set: { isSaved: false }})
+    .findByIdAndUpdate(req.params.id, { $set: { isSaved: false }})
     .then(function(dbArticle) {
       res.json(dbArticle);
     })
@@ -184,6 +185,19 @@ app.put("/delete/:id", function(req, res) {
       res.json(err);
     });
 });
+
+app.delete("/articles/:id", function(req, res){
+
+  db.Article
+  .findByIdAndUpdate(req.params.id, { $set: { isSaved: false }})
+    .then(function(dbArticle) {
+      res.json(dbArticle);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
+
    
     //  Start the server
      app.listen(PORT, function() {
