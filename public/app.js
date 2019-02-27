@@ -5,19 +5,21 @@ $.getJSON("/articles", function (data) {
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
     console.log(data[i].summary);
-    if (data[i].summary != "") {}
+    // if (data[i].summary === "") {
+    //   return false
+    // }
 
     $("#articles").append(
       "<div class='col-lg-12' style='margin-bottom:60px;'><div class='card'><div class='card-body'><a class='title-link' a href='https://www.umnews.org'" +
       data[i].link + "https://www.umnews.org" +
       data[i].link + "'><h5>" +
-      data[i].title + "</h5></a><hr><p class='card-text'>" +
-      data[i].summary + "</p><button data-id='" +
+      data[i].title + "</h5></a><hr><p class='card'>" + "Summary:"+ 
+      data[i].summary + "</p>      <button data-id=" +
       data[i]._id + "' class='btn-note btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#myModal' style='margin-right:10px;'>Note</button><button id='btn-save' data-id='" +
       data[i]._id + "' class='btn btn-outline-primary btn-sm'>Save Article</button></div></div></div>"
     );
   }
-
+      $(".card-text").html (data[i].summary)
   console.log(data);
 });
 
@@ -97,7 +99,7 @@ $(document).on("click", "#savenote", function () {
     });
 
   // Also, remove the values entered in the input and textarea for note entry
-   $("#bodyinput").val("");
+  //  $("#bodyinput").val("");
 });
 
 // When you click the Save Article button
